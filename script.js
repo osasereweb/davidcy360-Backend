@@ -26,7 +26,7 @@ const https = require('https');
 const app = express();
 app.use(
     cors({
-        origin: ["http://localhost:5173"],
+        origin: ["*"],
         credentials: true,
     })
 );
@@ -65,9 +65,9 @@ const databaseName = 'davidcy360africa';
 const objectID = mongodb.ObjectId;
 const id = new objectID();
 
-const uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${databaseName}`;
+// const uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${databaseName}`;
 
-// const uri = `mongodb://localhost:27017/${databaseName}`;
+const uri = `mongodb://localhost:27017/${databaseName}`;
 
 mongoose.connect(uri).then(() => {
     console.log('connected');
@@ -509,14 +509,14 @@ app.post('/userLogin', (req, res) => {
             const token = jwt.sign(userTokenInfo, process.env.SECRET_KEY);
 
             res.cookie("token", token, {
-                origin: "http://localhost:5173",
+                origin: "*",
                 // expires: new Date(Date.now() + 10000),
                 httpOnly: true,
                 secure: true,
                 sameSite: "none",
             })
                 .cookie("checkToken", true, {
-                    origin: "http://localhost:5173",
+                    origin: "*",
                     // expires: new Date(Date.now() + 10000),
                     secure: true,
                     sameSite: "none",
@@ -1230,14 +1230,14 @@ app.post('/v1/O19VvUGFTDS5sxIlLmMnhytTredfshJJDG0Oogyw/Admin/login', (req, res) 
             const token = jwt.sign(userTokenInfo, process.env.SECRET_KEY_ADMIN);
 
             res.cookie("HeadToken", token, {
-                origin: "http://localhost:5173",
+                origin: "*",
                 // expires: new Date(Date.now() + 10000),
                 httpOnly: true,
                 secure: true,
                 sameSite: "none",
             })
                 .cookie("checkToken", true, {
-                    origin: "http://localhost:5173",
+                    origin: "*",
                     // expires: new Date(Date.now() + 10000),
                     secure: true,
                     sameSite: "none",
