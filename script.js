@@ -65,9 +65,9 @@ const databaseName = 'davidcy360africa';
 const objectID = mongodb.ObjectId;
 const id = new objectID();
 
-// const uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${databaseName}`;
+const uri = process.env.MONGODB_URL;
 
-const uri = `mongodb://localhost:27017/${databaseName}`;
+// const uri = `mongodb://localhost:27017/${databaseName}`;
 
 mongoose.connect(uri).then(() => {
     console.log('connected');
