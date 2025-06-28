@@ -23,10 +23,12 @@ const https = require('https');
 
 
 
+
+
 const app = express();
 app.use(
     cors({
-        origin: ["*"],
+        origin: ["https://davidcy360-hhwb.onrender.com"],
         credentials: true,
     })
 );
@@ -509,14 +511,14 @@ app.post('/userLogin', (req, res) => {
             const token = jwt.sign(userTokenInfo, process.env.SECRET_KEY);
 
             res.cookie("token", token, {
-                origin: "*",
+                origin: "https://davidcy360-hhwb.onrender.com",
                 // expires: new Date(Date.now() + 10000),
                 httpOnly: true,
                 secure: true,
                 sameSite: "none",
             })
                 .cookie("checkToken", true, {
-                    origin: "*",
+                    origin: "https://davidcy360-hhwb.onrender.com",
                     // expires: new Date(Date.now() + 10000),
                     secure: true,
                     sameSite: "none",
@@ -1230,14 +1232,14 @@ app.post('/v1/O19VvUGFTDS5sxIlLmMnhytTredfshJJDG0Oogyw/Admin/login', (req, res) 
             const token = jwt.sign(userTokenInfo, process.env.SECRET_KEY_ADMIN);
 
             res.cookie("HeadToken", token, {
-                origin: "*",
+                origin: "https://davidcy360-hhwb.onrender.com",
                 // expires: new Date(Date.now() + 10000),
                 httpOnly: true,
                 secure: true,
                 sameSite: "none",
             })
                 .cookie("checkToken", true, {
-                    origin: "*",
+                    origin: "https://davidcy360-hhwb.onrender.com",
                     // expires: new Date(Date.now() + 10000),
                     secure: true,
                     sameSite: "none",
